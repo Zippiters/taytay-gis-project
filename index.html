@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poblacion, Taytay - Interactive Spatial System</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.css" />
+
+    <style>
+        :root {
+            --bg-main: #f8f9fa;
+            --surface: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #7f8c8d;
+            --accent-green: #2ecc71;
+            --accent-light: #e8f8f5;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .window-frame {
+            width: 100%;
+            max-width: 900px;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        /* Clean White Header Design */
+        .app-header {
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .app-header h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .app-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .app-header .authors {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* Unified Search Bar UI */
+        .search-wrapper {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: center;
+            background: #fafbfc;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .leaflet-control-search.custom-search-style {
+            box-shadow: none !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 8px !important;
+            width: 100% !important;
+            max-width: 500px;
+            background: var(--surface) !important;
+            display: flex;
+            transition: all 0.2s ease;
+        }
+
+        .leaflet-control-search.custom-search-style:focus-within {
+            border-color: var(--accent-green) !important;
+            box-shadow: 0 0 0 3px var(--accent-light) !important;
+        }
+
+        .leaflet-control-search.custom-search-style .search-input {
+            width: 100% !important;
+            background: transparent !important;
+            border: none !important;
+            padding: 12px 16px !important;
+            font-size: 15px !important;
+            height: 44px !important;
+        }
+
+        /* Map Segment */
+        #map {
+            width: 100%;
+            height: 450px;
+            background-color: #e5e9f0;
+        }
+
+        /* Spatial Data Panel with light green accents */
+        .data-panel {
+            border-top: 1px solid var(--border-color);
+            background: var(--surface);
+        }
+
+        .data-panel-title {
+            background-color: #fafbfc;
+            color: var(--text-dark);
+            padding: 12px 30px;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-panel-content {
+            padding: 25px 30px;
+            min-height: 100px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .data-field {
+            background: var(--bg-main);
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .data-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .data-value {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .placeholder-text {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window-frame">
+        <div class="app-header">
+            <h3>Poblacion, Taytay, Palawan</h3>
+            <h1>Interactive Geographic Map</h1>
+            <div class="authors">IT 14L Final Examination Element</div>
+        </div>
+
+        <div class="search-wrapper">
+            <div id="map-search-box" class="custom-search-style"></div>
+        </div>
+
+        <div id="map"></div>
+
+        <div class="data-panel">
+            <div class="data-panel-title">Location Information (Live Database Layer)</div>
+            <div class="data-panel-content" id="db-output-container">
+                <span class="placeholder-text">Select a feature on the map map canvas or use search to query the live MySQL entity data records.</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.9/leaflet-search.min.js"></script>
+
+    <script>
+        const map = L.map('map', { zoomControl: true }).setView([10.8248, 119.5199], 15);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // This structured array should mirror the GeoJSON coordinates you extracted in Part 1
+        // Replace the old hardcoded mapGeoJSONFeatures variable with this live local fetch:
+fetch('export.geojson')
+    .then(response => response.json())
+    .then(geojsonData => {
+        const spatialLayer = L.geoJSON(geojsonData, {
+    onEachFeature: function(feature, layer) {
+        const props = feature.properties;
+        
+        // 1. Try to find an official name first
+        let locationName = props.name || props.NAME;
+        
+        // 2. If it has no name, use its descriptive OpenStreetMap tags instead!
+        if (!locationName) {
+            locationName = props.amenity || props.historic || props.tourism || props.shop || "Public Feature";
+            
+            // Clean up lowercase tags (e.g., change "fast_food" to "Fast Food")
+            locationName = locationName.replace('_', ' ')
+                                      .replace(/\b\w/g, c => c.toUpperCase());
+        }
+        
+        layer.bindPopup(`<b>${locationName}</b>`);
+        layer.on('click', () => fetchDatabaseAttributes(locationName));
+    }
+}).addTo(map);
+
+const searchEngine = new L.Control.Search({
+    layer: spatialLayer,
+    propertyName: geojsonData.features[0].properties.name ? 'name' : 'NAME', 
+    // container: 'map-search-box', // 👈 Comment this out or delete it!
+    initial: false,
+    textPlaceholder: 'Search places in Poblacion...',
+    moveToLocation: function(latlng, title, map) {
+        map.setView(latlng, 17);
+    }
+});
+
+        searchEngine.on('search:locationfound', function(e) {
+            e.layer.openPopup();
+            const locationName = e.layer.feature.properties.name || e.layer.feature.properties.NAME;
+            fetchDatabaseAttributes(locationName);
+        });
+
+        map.addControl(searchEngine);
+    })
+    .catch(err => console.error("Error loading the geojson file layer:", err));
+
+        // Query backend Express server to pull operational data straight from MySQL
+        async function fetchDatabaseAttributes(locationName) {
+            const container = document.getElementById('db-output-container');
+            try {
+                const response = await fetch(`http://localhost:3000/api/location?name=${encodeURIComponent(locationName)}`);
+                if (!response.ok) throw new Error('Location data not found in DB profile.');
+                
+                const data = await response.json();
+                
+                container.innerHTML = `
+                    <div class="data-grid">
+                        <div class="data-field"><div class="data-label">Feature Name</div><div class="data-value">${data.location_name}</div></div>
+                        <div class="data-field"><div class="data-label">Classification</div><div class="data-value">${data.classification}</div></div>
+                        <div class="data-field"><div class="data-label">Historical Timeline</div><div class="data-value">Est. ${data.established}</div></div>
+                    </div>
+                    <div class="data-field" style="margin-top: 15px;"><div class="data-label">Spatial Narrative Description</div><div class="data-value">${data.description}</div></div>
+                `;
+            } catch (err) {
+                container.innerHTML = `<span class="placeholder-text" style="color: #e74c3c;">Spatial metadata fallback activated: ${err.message}</span>`;
+            }
+        }
+
+        const spatialLayer = L.geoJSON(mapGeoJSONFeatures, {
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup(`<b>${feature.properties.name}</b>`);
+                layer.on('click', () => fetchDatabaseAttributes(feature.properties.name));
+            }
+        }).addTo(map);
+
+        const searchEngine = new L.Control.Search({
+            layer: spatialLayer,
+            propertyName: 'name',
+            container: 'map-search-box',
+            initial: false,
+            textPlaceholder: 'Search places in Poblacion...',
+            moveToLocation: function(latlng, title, map) {
+                map.setView(latlng, 17);
+            }
+        });
+
+        searchEngine.on('search:locationfound', function(e) {
+            e.layer.openPopup();
+            fetchDatabaseAttributes(e.layer.feature.properties.name);
+        });
+
+        map.addControl(searchEngine);
+    </script>
+</body>
+</html>

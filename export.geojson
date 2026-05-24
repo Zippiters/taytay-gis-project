@@ -1,0 +1,334 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-05-24T08:34:44Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2146202996",
+        "name": "Casa Rosa Inn",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5185927,
+          10.8261876
+        ]
+      },
+      "id": "node/2146202996"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4566498889",
+        "addr:place": "Poblacion",
+        "addr:town": "Taytay",
+        "name": "Pems pension + tours",
+        "name:en": "Pems pension + tours",
+        "tourism": "guest_house"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5178276,
+          10.8270062
+        ]
+      },
+      "id": "node/4566498889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601037693",
+        "amenity": "fuel",
+        "brand": "Petron",
+        "brand:wikidata": "Q7179011",
+        "brand:wikipedia": "en:Petron Corporation",
+        "name": "Petron",
+        "name:en": "Petron"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5163615,
+          10.8256881
+        ]
+      },
+      "id": "node/4601037693"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601049290",
+        "amenity": "bank",
+        "name": "First Consolidated Bank",
+        "name:en": "First Consolidated Bank"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5175641,
+          10.826946
+        ]
+      },
+      "id": "node/4601049290"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601147590",
+        "addr:place": "Poblacion",
+        "amenity": "university",
+        "education": "university",
+        "name": "Palawan State University - Taytay Campus",
+        "operator": "Palawan State University"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5184107,
+          10.8214281
+        ]
+      },
+      "id": "node/4601147590"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601157089",
+        "fixme": "name",
+        "tourism": "guest_house"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.518154,
+          10.8268908
+        ]
+      },
+      "id": "node/4601157089"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601168489",
+        "amenity": "fast_food",
+        "cuisine": "regional",
+        "description": "Eatery"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5146404,
+          10.8249828
+        ]
+      },
+      "id": "node/4601168489"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601168589",
+        "amenity": "restaurant",
+        "name": "Surong Resto Bar",
+        "name:en": "Surong Resto Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.516114,
+          10.8243148
+        ]
+      },
+      "id": "node/4601168589"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601168889",
+        "amenity": "fast_food",
+        "name": "Kubo Bar",
+        "name:en": "Kubo Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5164863,
+          10.8242653
+        ]
+      },
+      "id": "node/4601168889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601169189",
+        "name": "Promise Keeper Suites",
+        "name:en": "Promise Keeper Suites",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5171381,
+          10.8245356
+        ]
+      },
+      "id": "node/4601169189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601183689",
+        "addr:street": "Sorillo Street",
+        "name": "Tay Lelongs' Pension House",
+        "name:en": "Tay Lelongs' Pension House",
+        "tourism": "hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5181169,
+          10.8229791
+        ]
+      },
+      "id": "node/4601183689"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4601183690",
+        "amenity": "fast_food",
+        "name": "Xed's Snack House",
+        "name:en": "Xed's Snack House"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5172675,
+          10.8242119
+        ]
+      },
+      "id": "node/4601183690"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4603010289",
+        "amenity": "fast_food",
+        "name": "Chowbay",
+        "name:en": "Chowbay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5156717,
+          10.8271276
+        ]
+      },
+      "id": "node/4603010289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5424261621",
+        "amenity": "atm",
+        "operator": "BDO Bank"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5170658,
+          10.8244071
+        ]
+      },
+      "id": "node/5424261621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5436633723",
+        "amenity": "atm",
+        "brand": "BPI",
+        "brand:wikidata": "Q2501256",
+        "name": "BPI",
+        "network": "ExpressNet;MegaLink",
+        "operator": "BPI",
+        "operator:wikidata": "Q2501256"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5166931,
+          10.8242862
+        ]
+      },
+      "id": "node/5436633723"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5436988929",
+        "amenity": "atm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5175967,
+          10.8269008
+        ]
+      },
+      "id": "node/5436988929"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6806322598",
+        "amenity": "police"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5103299,
+          10.8240415
+        ]
+      },
+      "id": "node/6806322598"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10607459605",
+        "amenity": "restaurant",
+        "name": "Catarbas Resto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5170315,
+          10.8272329
+        ]
+      },
+      "id": "node/10607459605"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12378208800",
+        "historic": "memorial",
+        "memorial": "plaque"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5177628,
+          10.8279792
+        ]
+      },
+      "id": "node/12378208800"
+    }
+  ]
+}
